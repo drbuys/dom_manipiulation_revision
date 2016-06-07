@@ -78,7 +78,7 @@ var main = function() {
     // addbutton.onclick = handleClick;
     addbutton.onclick = handleSubmit;
 
-    var deleteButton = document.getElementById('delete-button');
+    var deleteButton = document.getElementsByClassName('delete-button');
     deleteButton.onclick = handleClickDelete;
 
     var form = document.getElementById( 'quote-form' );
@@ -103,9 +103,7 @@ var handleClick = function() {
 };
 
 var handleClickDelete = function(event) {
-    // console.log(event.target);
-    childNode = event.target;
-    childNode.parentNode.removeChild(childNode);
+    console.log(event.target);
 };
 
 var addQuote = function(text, author) {
@@ -127,16 +125,16 @@ var addQuote = function(text, author) {
     quotes.appendChild(quoteArticle);
 
     var deleteButton = document.createElement('form');
-    deleteButton.setAttribute( 'id', 'quote-delete');
+    deleteButton.setAttribute( 'class', 'quote-delete');
 
     var deleteInput = document.createElement('input');
     deleteInput.setAttribute( 'type', 'button' );
-    deleteInput.setAttribute( 'id', 'delete-button' );
+    deleteInput.setAttribute( 'class', 'delete-button' );
     deleteInput.setAttribute( 'value', 'Delete Quote' );
 
     deleteButton.appendChild(deleteInput);
 
-    quotes.appendChild(deleteButton);
+    quoteArticle.appendChild(deleteButton);
 };
 
 // adding quote to webpage (attaching to DOM)

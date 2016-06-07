@@ -79,7 +79,14 @@ var main = function() {
     addbutton.onclick = handleSubmit;
 
     var deleteButton = document.getElementsByClassName('delete-button');
-    deleteButton.onclick = handleClickDelete;
+    for(var i in deleteButton) {
+    deleteButton[i].onclick = handleClickDelete;
+    }
+    // deleteButton[0].onclick = handleClickDelete;
+    // deleteButton[1].onclick = handleClickDelete;
+    // deleteButton[2].onclick = handleClickDelete;
+    // deleteButton[3].onclick = handleClickDelete;
+    console.log(deleteButton);
 
     var form = document.getElementById( 'quote-form' );
     form.onsubmit = handleSubmit;
@@ -91,7 +98,6 @@ var main = function() {
 
 var handleSubmit = function( event ) {
     event.preventDefault();
-    console.log("Hello");
     handleClick();
 };
 
@@ -104,6 +110,10 @@ var handleClick = function() {
 
 var handleClickDelete = function(event) {
     console.log(event.target);
+    var childNode = event.target;
+    var adult = childNode.parentNode;
+    var oldie = adult.parentNode;
+    oldie.parentNode.removeChild(oldie);
 };
 
 var addQuote = function(text, author) {
@@ -126,6 +136,8 @@ var addQuote = function(text, author) {
 
     var deleteButton = document.createElement('form');
     deleteButton.setAttribute( 'class', 'quote-delete');
+
+    deleteButton.onclick = handleClickDelete;
 
     var deleteInput = document.createElement('input');
     deleteInput.setAttribute( 'type', 'button' );
